@@ -31,7 +31,7 @@ public func after(interval: DispatchTimeInterval) -> Promise<Void> {
     #if swift(>=4.0)
         DispatchQueue.global().asyncAfter(deadline: when) { fulfill(()) }
     #else
-        DispatchQueue.global().asyncAfter(deadline: when, execute: fulfill)
+        DispatchQueue.global().asyncAfter(deadline: when, execute: { fulfill(Void()) })
     #endif
     }
 }
